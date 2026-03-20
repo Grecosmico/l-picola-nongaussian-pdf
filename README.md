@@ -57,12 +57,43 @@ This approach allows the generation of non-Gaussian initial conditions defined d
 
 ---
 
-### 3. Compilation flag
+## Configuration
+
+The type of initial conditions and the source of the random field are controlled at compile time through the Makefile using two parameters:
+
+- **IC_TYPE**: defines the statistical model of the initial conditions  
+- **RAND_SOURCE**: defines how the random field is generated  
+
+### IC_TYPE options
+
+- `GAUSSIAN` — standard Gaussian initial conditions  
+- `LOCAL_FNL` — local-type primordial non-Gaussianity  
+- `EQUIL_FNL` — equilateral-type non-Gaussianity  
+- `ORTHO_FNL` — orthogonal-type non-Gaussianity  
+- `GENERIC_FNL` — generic kernel-based implementation  
+
+### RAND_SOURCE options
+
+- `INTERNAL` — standard internal Gaussian random number generation  
+- `EXTERNAL` — random field is read from an input file  
+
+The external random field option enables the generation of initial conditions from arbitrary probability distribution functions (PDFs).
+
+**Note:** the external random field implementation is currently supported for the Gaussian branch.
+
+---
+
+### 3. Compilation
 
 To activate the modified pipeline, compile with:
 
 RANDOM_NUMBER_FILE = -DRANDOM_NUMBER_FILE
 OPTIONS += $(RANDOM_NUMBER_FILE)
+
+### Example usage
+
+Compile with:
+
 
 ### 4. Runtime parameter
 
