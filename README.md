@@ -287,7 +287,7 @@ Universidad de Valparaíso
 
 ## Acknowledgements
 
-This work was developed in collaboration with Prof. Dr. Graeme Candlish, whose guidance and discussions were essential for the development of this project.
+This work was developed in collaboration with Prof. Graeme Candlish, whose guidance and discussions were essential for the development of this project.
 
 Original L-PICOLA code:
 - Cullan Howlett  
