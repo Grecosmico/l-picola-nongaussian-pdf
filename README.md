@@ -284,7 +284,7 @@ This implementation enables the study of cosmological structure formation with n
 ## Contact
 
 Greco Peña  
-PhD candidate in Cosmology  
+PhD candidate in Astrophysics  
 Universidad de Valparaíso  
 greco.pena@postgrado.uv.cl
 
