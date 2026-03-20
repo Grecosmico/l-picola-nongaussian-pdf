@@ -111,7 +111,8 @@ The type of initial conditions and the source of the random field are controlled
 
 The external random field option enables the generation of initial conditions from arbitrary probability distribution functions (PDFs).
 
-**Note:** the external random field implementation is currently supported for the Gaussian branch.
+**Note:** when `RAND_SOURCE=EXTERNAL` is used, the statistical properties of the initial conditions are fully determined by the input random field, independently of the selected `IC_TYPE`.
+
 
 ---
 
