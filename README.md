@@ -56,6 +56,44 @@ This approach allows the generation of non-Gaussian initial conditions defined d
 - Enables PDF-based primordial non-Gaussian initial conditions
 
 ---
+## Input Random Field Format
+
+When `RAND_SOURCE=EXTERNAL`, the code expects the random field to be provided as an external file.
+
+The current implementation is designed to read random numbers in a format compatible with the white-noise files used by MUSIC (GRAFIC format). This makes it possible to use the same random field across different initial-condition generators and N-body simulation pipelines, including codes such as MUSIC, RAMSES, and GADGET.
+
+### Expected format
+
+The input file should:
+
+- contain a 3D white-noise field
+- be written in GRAFIC/MUSIC format
+- correspond to a cubic grid of size `2^level x 2^level x 2^level`
+- include the random field values stored as a FORTRAN unformatted file
+
+In the MUSIC convention, the file contains:
+
+- `np1`, `np2`, `np3`, `iseed`
+- followed by the white-noise field values `f(i1,i2,i3)`
+
+with:
+
+- `np1 = np2 = np3 = 2^level`
+- `iseed` an integer seed identifier
+- `f` an array of single- or double-precision real numbers
+
+### Compatibility note
+
+This implementation does not require MUSIC itself, but it can use random fields generated in the same format. This allows direct consistency tests between L-PICOLA and other simulation pipelines using the same underlying white-noise realization.
+
+### Practical note
+
+Users should ensure that:
+
+- the input grid size matches the simulation mesh configuration
+- the file format is consistent with the expected GRAFIC/MUSIC layout
+- the random field has the intended statistical properties before being passed to the code
+---
 
 ## Configuration
 
@@ -83,46 +121,43 @@ The external random field option enables the generation of initial conditions fr
 
 ---
 
-### 3. Compilation
+## Input Random Field Format
 
-To activate the modified pipeline, compile with:
+When `RAND_SOURCE=EXTERNAL`, the code expects the random field to be provided as an external file.
 
-RANDOM_NUMBER_FILE = -DRANDOM_NUMBER_FILE
-OPTIONS += $(RANDOM_NUMBER_FILE)
+The current implementation reads random numbers in a format compatible with the white-noise files used by MUSIC (GRAFIC format). This allows the same random field to be used across different initial-condition generators and N-body simulation pipelines, including MUSIC, RAMSES, and GADGET.
 
-### Example usage
+### Expected format
 
-Compile with:
+The input file must:
 
+- contain a 3D white-noise field  
+- be written in GRAFIC/MUSIC format  
+- correspond to a cubic grid of size `2^level x 2^level x 2^level`  
+- be stored as a FORTRAN unformatted binary file  
 
-### 4. Runtime parameter
+In the MUSIC convention, the file contains:
 
-In `run_parameters.dat`, specify the input file:
+- `np1`, `np2`, `np3`, `iseed`  
+- followed by the white-noise field values `f(i1,i2,i3)`  
 
+with:
 
----
+- `np1 = np2 = np3 = 2^level`  
+- `iseed` an integer seed identifier  
+- `f` an array of single- or double-precision real numbers  
 
-## Usage
+### Compatibility
 
-### 1. Compile
+This implementation does not require MUSIC itself, but it can use random fields generated in the same format. This enables direct consistency tests between L-PICOLA and other simulation pipelines using the same underlying white-noise realization.
 
-Ensure the flag `-DRANDOM_NUMBER_FILE` is enabled in the Makefile, then compile as usual.
+### Requirements
 
----
+Users must ensure that:
 
-### 2. Provide random field
-
-- Input must be a binary file containing the random field
-- The field should:
-  - follow the desired PDF
-  - be properly normalized
-  - match the simulation grid size
-
----
-
-### 3. Run
-
-Run L-PICOLA as usual using the modified parameter file.
+- the input grid size matches the simulation mesh configuration  
+- the file format is consistent with the GRAFIC/MUSIC layout  
+- the random field has the intended statistical properties  
 
 ---
 
@@ -130,21 +165,61 @@ Run L-PICOLA as usual using the modified parameter file.
 
 This repository does not include a built-in random number generator. Instead, it expects an externally generated random field as input.
 
-This design allows full flexibility in how the field is generated. Any sampling method can be used, including:
+The field can be generated using any sampling technique, including:
 
-- acceptance–rejection sampling
-- inverse transform sampling
-- custom numerical methods
+- acceptance–rejection sampling  
+- inverse transform sampling  
+- custom numerical methods  
 
 A dedicated random-field generator may be provided in future work.
 
 ---
+## Compilation
+
+The code is compiled using the Makefile, where the type of initial conditions and the source of random numbers are controlled through the parameters `IC_TYPE` and `RAND_SOURCE`.
+
+### Standard Gaussian initial conditions
+
+make IC_TYPE=GAUSSIAN RAND_SOURCE=INTERNAL
+
+### Gaussian initial conditions with external random field
+
+make IC_TYPE=GAUSSIAN RAND_SOURCE=EXTERNAL
+
+When `RAND_SOURCE=EXTERNAL` is selected, the Makefile enables the compilation flag:
+
+-DRANDOM_NUMBER_FILE
+
+which activates the external random-field input pipeline in the code.
+
+---
+
+## Usage
+
+### 1. Compile
+
+Compile the code with the desired configuration. For example:
+
+make IC_TYPE=GAUSSIAN RAND_SOURCE=EXTERNAL
+
+### 2. Set input file
+
+In `run_parameters.dat`, specify the path to the external random field:
+
+RandomNumberFilename /path/to/random_numbers.dat
+
+### 3. Run
+
+Execute the code as usual:
+
+./L-PICOLA run_parameters.dat
+---
 
 ## Important Notes
 
-- Proper normalization of the FFT is required for correct amplitudes
-- The statistical properties of the simulation depend entirely on the input random field
-- Parallel performance of the input routine has not been fully tested
+- Proper normalization of the FFT is required for correct amplitudes  
+- The statistical properties of the simulation depend entirely on the input random field  
+- Parallel performance of the input routine has not been fully tested  
 
 ---
 
@@ -156,8 +231,8 @@ L-PICOLA is distributed under the GNU General Public License (GPL).
 This modified version is distributed under the same license.
 
 Modifications in this repository include:
-- External random-field input
-- Modified 2LPT initial condition generation
+- External random-field input  
+- Modified 2LPT initial condition generation  
 
 Please refer to the `LICENSE` file for full details.
 
@@ -173,7 +248,7 @@ This implementation enables the study of cosmological structure formation with n
 
 Greco Peña  
 PhD candidate in Cosmology  
-Universidad de Valparaíso
+Universidad de Valparaíso  
 
 ---
 
@@ -181,4 +256,4 @@ Universidad de Valparaíso
 
 Original L-PICOLA code:
 - Cullan Howlett  
-- Marc Manera
+- Marc Manera  
