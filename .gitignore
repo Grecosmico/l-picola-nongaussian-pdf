@@ -47,3 +47,5 @@ build/
 
 # debug information files
 *.dwo
+input_files/*.dat
+*.backup.md
