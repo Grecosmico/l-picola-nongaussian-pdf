@@ -1,3 +1,11 @@
+# build
+build/
+*.o
+*~
+*.out
+*.dat
+*.npy
+
 # Prerequisites
 *.d
 
