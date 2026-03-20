@@ -24,6 +24,11 @@ https://github.com/CullanHowlett/l-picola
 
 
 ---
+## Authors
+
+Greco Peña  
+Graeme Candlish
+---
 
 ## Methodology
 
@@ -282,12 +287,13 @@ This implementation enables the study of cosmological structure formation with n
 Greco Peña  
 PhD candidate in Cosmology  
 Universidad de Valparaíso  
+greco.pena@postgrado.uv.cl
 
 ---
 
 ## Acknowledgements
 
-This work was developed in collaboration with Prof. Graeme Candlish, whose guidance and discussions were essential for the development of this project.
+I would like to thank Prof. Graeme Candlish for his guidance, discussions, and contributions to the development of this project.
 
 Original L-PICOLA code:
 - Cullan Howlett  
