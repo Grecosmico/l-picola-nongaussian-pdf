@@ -22,8 +22,6 @@ please refer to the original repository:
 
 https://github.com/CullanHowlett/l-picola
 
-
----
 ## Authors
 Greco Peña 
 Graeme Candlish
