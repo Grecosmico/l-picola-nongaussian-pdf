@@ -113,6 +113,10 @@ The external random field option enables the generation of initial conditions fr
 
 **Note:** when `RAND_SOURCE=EXTERNAL` is used, the statistical properties of the initial conditions are fully determined by the input random field, independently of the selected `IC_TYPE`.
 
+**Note 2:** the external random-field input is used to construct the first-order (Zeldovich) displacement field. Since the second-order 2LPT correction is computed from this field, the same input also propagates consistently into the 2LPT initial conditions when 2LPT is enabled.
+
+**Warning:** the external random-field implementation has not yet been fully validated in parallel mode.
+
 
 ---
 
