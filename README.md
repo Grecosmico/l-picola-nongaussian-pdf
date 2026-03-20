@@ -22,6 +22,7 @@ please refer to the original repository:
 
 https://github.com/CullanHowlett/l-picola
 
+
 ---
 
 ## Methodology
@@ -233,6 +234,27 @@ Execute the code as usual:
 - Parallel performance of the input routine has not been fully tested  
 
 ---
+## Citation
+
+If you use this code, please cite both the original L-PICOLA paper and the work associated with this modification.
+
+### Original L-PICOLA code
+
+Howlett, C., Manera, M., & Percival, W. J. (2015)  
+*L-PICOLA: A parallel code for fast dark matter simulation*  
+Astronomy and Computing, 12, 109–126  
+https://arxiv.org/abs/1506.03737
+
+### This work
+
+Greco Peña & Graeme CandInitial releaselish (2022)  
+*Title of your paper*  
+[Journal / arXiv link]
+
+### Code repository
+
+This modified version of L-PICOLA is publicly available at:  
+https://github.com/Grecosmico/l-picola-nongaussian-pdf (release v1.0)
 
 ## License and Attribution
 
