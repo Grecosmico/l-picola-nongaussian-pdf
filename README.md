@@ -58,42 +58,36 @@ This approach allows the generation of non-Gaussian initial conditions defined d
 ---
 ## Input Random Field Format
 
-When `RAND_SOURCE=EXTERNAL`, the code expects the random field to be provided as an external file.
+When `RAND_SOURCE=EXTERNAL`, the code expects a 3D white-noise field provided as an external file.
 
-The current implementation is designed to read random numbers in a format compatible with the white-noise files used by MUSIC (GRAFIC format). This makes it possible to use the same random field across different initial-condition generators and N-body simulation pipelines, including codes such as MUSIC, RAMSES, and GADGET.
+The current implementation reads external random fields in the same GRAFIC-format convention that can also be used by MUSIC to generate initial conditions. This makes it possible to use the same white-noise realization in this modified version of L-PICOLA and in MUSIC-based pipelines for other N-body codes such as RAMSES, GADGET, or AREPO.
+
+This is particularly useful for controlled comparisons between this modified version of L-PICOLA and other N-body solvers using the same underlying random input.
 
 ### Expected format
 
-The input file should:
+The input file must:
 
-- contain a 3D white-noise field
-- be written in GRAFIC/MUSIC format
-- correspond to a cubic grid of size `2^level x 2^level x 2^level`
-- include the random field values stored as a FORTRAN unformatted file
+- contain a 3D white-noise field  
+- correspond to a cubic grid of size `2^level x 2^level x 2^level`  
+- be stored as a FORTRAN unformatted binary file following the GRAFIC convention  
 
 In the MUSIC convention, the file contains:
 
-- `np1`, `np2`, `np3`, `iseed`
-- followed by the white-noise field values `f(i1,i2,i3)`
+- `np1`, `np2`, `np3`, `iseed`  
+- followed by the field values `f(i1,i2,i3)`  
 
 with:
 
-- `np1 = np2 = np3 = 2^level`
-- `iseed` an integer seed identifier
-- `f` an array of single- or double-precision real numbers
+- `np1 = np2 = np3 = 2^level`  
+- `iseed` an integer seed identifier  
+- `f` an array of single- or double-precision real numbers  
 
-### Compatibility note
+### Requirements
 
-This implementation does not require MUSIC itself, but it can use random fields generated in the same format. This allows direct consistency tests between L-PICOLA and other simulation pipelines using the same underlying white-noise realization.
-
-### Practical note
-
-Users should ensure that:
-
-- the input grid size matches the simulation mesh configuration
-- the file format is consistent with the expected GRAFIC/MUSIC layout
-- the random field has the intended statistical properties before being passed to the code
----
+- the grid size must match the simulation mesh  
+- the file must follow the expected GRAFIC/MUSIC layout  
+- the statistical properties of the field must be consistent with the intended PDF  
 
 ## Configuration
 
