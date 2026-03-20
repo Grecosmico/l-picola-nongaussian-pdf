@@ -247,9 +247,9 @@ https://arxiv.org/abs/1506.03737
 
 ### This work
 
-Greco Peña & Graeme CandInitial releaselish (2022)  
-*Title of your paper*  
-[Journal / arXiv link]
+Greco Peña & Graeme Candlish (2022)  
+*The large-scale structure from non-Gaussian primordial perturbations*  
+https://arxiv.org/abs/2201.08842
 
 ### Code repository
 
