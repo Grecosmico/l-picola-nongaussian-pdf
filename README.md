@@ -10,6 +10,18 @@ This repository contains a modified version of the L-PICOLA code designed to gen
 
 The main modification consists of replacing the standard Gaussian random mode generation in Fourier space with an externally generated random field. This enables the construction of initial conditions beyond standard bispectrum-based parametrizations (e.g. f_NL models).
 
+This repository is based on the original **L-PICOLA** code.
+
+For full documentation regarding:
+- parameter files (`run_parameters.dat`)
+- cosmological inputs
+- simulation options and flags
+- standard Gaussian and FNL implementations
+
+please refer to the original repository:
+
+https://github.com/CullanHowlett/l-picola
+
 ---
 
 ## Methodology
