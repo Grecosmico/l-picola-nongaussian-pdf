@@ -137,36 +137,6 @@ The external random field option enables the generation of initial conditions fr
 
 ---
 
-## Input Random Field Format
-
-When `RAND_SOURCE=EXTERNAL`, the code expects the random field to be provided as an external file.
-
-The current implementation reads random numbers in a format compatible with the white-noise files used by MUSIC (GRAFIC format). This allows the same random field to be used across different initial-condition generators and N-body simulation pipelines, including MUSIC, RAMSES, and GADGET.
-
-### Expected format
-
-The input file must:
-
-- contain a 3D white-noise field  
-- be written in GRAFIC/MUSIC format  
-- correspond to a cubic grid of size `2^level x 2^level x 2^level`  
-- be stored as a FORTRAN unformatted binary file  
-
-In the MUSIC convention, the file contains:
-
-- `np1`, `np2`, `np3`, `iseed`  
-- followed by the white-noise field values `f(i1,i2,i3)`  
-
-with:
-
-- `np1 = np2 = np3 = 2^level`  
-- `iseed` an integer seed identifier  
-- `f` an array of single- or double-precision real numbers  
-
-### Compatibility
-
-This implementation does not require MUSIC itself, but it can use random fields generated in the same format. This enables direct consistency tests between L-PICOLA and other simulation pipelines using the same underlying white-noise realization.
-
 ### Requirements
 
 Users must ensure that:
