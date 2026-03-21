@@ -51,9 +51,9 @@ delta(k) ~ internally generated Gaussian random field
 
 with:
 
-delta(k) ~ FFT[input random field]
+$\delta(k) ~ FFT[\mu]$
 
-This approach allows the generation of non-Gaussian initial conditions defined directly at the PDF level, rather than through low-order correlators such as the bispectrum.
+where $\mu$ is the input random field. This approach allows the generation of non-Gaussian initial conditions defined directly at the PDF level, rather than through low-order correlators such as the bispectrum.
 
 ---
 
