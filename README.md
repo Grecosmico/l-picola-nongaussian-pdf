@@ -38,9 +38,7 @@ $\delta(k) = \sqrt(P(k)) \chi(k)$
 where $\chi(k)$ is a is a complex Gaussian random field with random amplitudes and phases.
 
 L-PICOLA also supports non-Gaussian initial conditions through perturbative prescriptions (e.g. local-type PNG), typically parameterised by 
-$f_{NL}$​
-
-, which modify the field via low-order correlators such as the bispectrum.
+f_NL​, which modify the field via low-order correlators such as the bispectrum.
 
 In this modified version:
 
