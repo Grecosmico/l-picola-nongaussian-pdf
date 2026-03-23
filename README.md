@@ -35,7 +35,11 @@ In the original L-PICOLA implementation, Gaussian initial conditions are generat
 
 $\delta(k) \sim \sqrt(P(k)) * \sqrt(-\log U) * \exp(i \phi)$
 
-where U is a uniform random variable and phi is a random phase.
+where U is a uniform random variable and phi is a random phase. 
+L-PICOLA also supports non-Gaussian initial conditions through perturbative prescriptions (e.g. local-type PNG), typically parameterised by 
+$f_{NL}$​
+
+, which modify the field via low-order correlators such as the bispectrum.
 
 In this modified version:
 
