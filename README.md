@@ -35,7 +35,7 @@ In the original L-PICOLA implementation, Gaussian initial conditions are generat
 
 $\delta(k) = \sqrt(P(k)) \chi(k)$
 
-where $\chi(k)$ is a is a complex Gaussian random field with random amplitudes and phases.
+where $\chi(k)$  is a complex Gaussian random field with random amplitudes and phases.
 
 L-PICOLA also supports non-Gaussian initial conditions through perturbative prescriptions (e.g. local-type PNG), typically parameterised by 
 f_NL​, which modify the field via low-order correlators such as the bispectrum.
