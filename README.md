@@ -137,17 +137,6 @@ The external random field option enables the generation of initial conditions fr
 
 **Warning:** the external random-field implementation has not yet been fully validated in parallel mode.
 
-
----
-
-### Requirements
-
-Users must ensure that:
-
-- the input grid size matches the simulation mesh configuration  
-- the file format is consistent with the GRAFIC/MUSIC layout  
-- the random field has the intended statistical properties  
-
 ---
 
 ## Random Field Generation
